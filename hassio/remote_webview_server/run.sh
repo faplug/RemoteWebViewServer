@@ -53,4 +53,11 @@ fi
 command -v node >/dev/null
 test -f dist/index.js
 
+# После старта аддона один раз перезагружаем уже открытую страницу панели:
+# если связь оборвалась и сервер перезапустили, клиент иначе остаётся
+# с мёртвой страницей и не переподключается.
+if [ -f /reload_on_start.mjs ]; then
+  node /reload_on_start.mjs >> /data/reload_on_start.log 2>&1 &
+fi
+
 exec node dist/index.js
