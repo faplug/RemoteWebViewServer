@@ -34,6 +34,7 @@ COPY --from=build /app/dist ./dist
 COPY self-test ./self-test
 COPY run.sh /run.sh
 COPY reload_on_start.mjs /reload_on_start.mjs
+COPY static.mjs /static.mjs
 RUN chmod +x /run.sh
 
 EXPOSE 8080 8081 9221 18080

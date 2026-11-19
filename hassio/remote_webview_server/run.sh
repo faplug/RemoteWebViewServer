@@ -61,6 +61,10 @@ test -f dist/index.js
 # После старта аддона один раз перезагружаем уже открытую страницу панели:
 # если связь оборвалась и сервер перезапустили, клиент иначе остаётся
 # с мёртвой страницей и не переподключается.
+if [ -f /static.mjs ]; then
+  PANEL_HTTP_ROOT="${PANEL_HTTP_ROOT:-/data/panel}" node /static.mjs >> /data/panel_http.log 2>&1 &
+fi
+
 if [ -f /reload_on_start.mjs ]; then
   node /reload_on_start.mjs >> /data/reload_on_start.log 2>&1 &
 fi
