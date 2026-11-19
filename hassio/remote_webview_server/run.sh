@@ -28,6 +28,11 @@ export INJECT_JS_URL="$(get_opt inject_js_url "")"
 export INJECT_JS_ALLOW_HTTP="$(get_opt inject_js_allow_http false)"
 export BROWSER_LOCALE="$(get_opt browser_locale "en-US")"
 export MAX_DEVICE_SCALE_FACTOR="$(get_opt max_device_scale_factor 1)"
+if [ -f /data/start_url.txt ]; then
+  export START_URL="$(cat /data/start_url.txt)"
+else
+  export START_URL="$(get_opt start_url "")"
+fi
 
 USER_DATA_DIR_OPT="$(get_opt user_data_dir "/pw-data")"
 if [ "$USER_DATA_DIR_OPT" = "/pw-data" ]; then
