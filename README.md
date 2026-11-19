@@ -1,4 +1,3 @@
-[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct-single.svg)](https://stand-with-ukraine.pp.ua)
 
 # Remote WebView Server
 
@@ -15,8 +14,8 @@ Headless browser that renders target web pages (e.g., Home Assistant dashboards)
 - Per-client settings: each connection can supply its own width, height, tileSize, jpegQuality, maxBytesPerMessage, etc.
 - Hot reconfigure: reconnecting with new params reconfigures the device session and triggers a full-frame refresh.
 - Smarter frame gating: throttling + content-hash dedup (skip identical frames)
-- No viewers = no work: frames are ACK’d to keep Chromium streaming, but tiles aren’t encoded/queued when there are no listeners.
-- Touch event bridging (down/move/up) — scrolling supported (no gestures yet)
+- No viewers = no work: frames are ACKвЂ™d to keep Chromium streaming, but tiles arenвЂ™t encoded/queued when there are no listeners.
+- Touch event bridging (down/move/up) вЂ” scrolling supported (no gestures yet)
 - Client-driven navigation: the client can control which page to open.
 - Built-in self-test (open the `self-test` URL from the client): measures what the whole pipeline delivers, names the bottleneck (device, server CPU or network) and suggests `min_frame_interval`, `jpeg_quality` and `max_bytes_per_msg`
 - Health endpoint for container orchestration
@@ -24,7 +23,7 @@ Headless browser that renders target web pages (e.g., Home Assistant dashboards)
 
 ## On-screen keyboard
 
-The server does not include a built-in on-screen keyboard, but you can inject any external JavaScript file into every page it renders — including a virtual keyboard of your choice.
+The server does not include a built-in on-screen keyboard, but you can inject any external JavaScript file into every page it renders вЂ” including a virtual keyboard of your choice.
 
 - `INJECT_JS_URL` (empty by default): direct HTTPS URL to a JavaScript file. If set, the script is fetched once on startup and injected into every new page via `Page.addScriptToEvaluateOnNewDocument`.
 - `INJECT_JS_ALLOW_HTTP` (`false` by default): allow plain HTTP URLs (HTTPS is strongly recommended).
@@ -33,18 +32,18 @@ The server does not include a built-in on-screen keyboard, but you can inject an
 >
 > The injected script runs with full access to every page the server renders, including any active sessions, credentials, and cookies. Only use scripts from sources you fully trust. Never point this at a URL controlled by a third party.
 
-## Accessing the server’s tab with Chrome DevTools
+## Accessing the serverвЂ™s tab with Chrome DevTools
 
 1. Make sure your server exposes the DevTools (CDP) port (e.g., 9222).
    - If you use a pure Docker container, make sure you have configured and started `debug-proxy`
    - If HA OS addon is used, enable `expose_debug_proxy`
-1. In Chrome, go to chrome://inspect/#devices → Configure… → add your host: hostname_or_ip:9222.
+1. In Chrome, go to chrome://inspect/#devices в†’ ConfigureвЂ¦ в†’ add your host: hostname_or_ip:9222.
 1. You should see the page the server opened (the one you want to log into, e.g., Home Assistant). Click inspect to open a full DevTools window for that tab.
 
 ## Image Tags & Versioning
 
-- latest — newest stable release
-- beta — newest pre-release (rolling)
+- latest вЂ” newest stable release
+- beta вЂ” newest pre-release (rolling)
 - Semantic versions: X.Y.Z, plus convenience tags X.Y, X on stable releases
 
 You can pin a stable release (`1.4.0`) or track channels (`latest`, `beta`) depending on your deployment strategy.
