@@ -5,7 +5,6 @@
 > - **~926 MB image instead of 2.57 GB** — only the Chromium headless shell is installed, Firefox/WebKit and the full Chromium are left out (see [SLIM.md](SLIM.md));
 > - **serves the panel page itself** — the addon runs a tiny static server (`static.mjs`, port 8099) for `/data/panel`, because Home Assistant protects `/local/...` and the browser started by the addon has no session there;
 > - **opens the page on start** — `reload_on_start.mjs` opens `start_url` (or reloads the open panel page) and pins the viewport to 480x480, so a restarted addon never leaves the display blank;
-> - the upstream "Stand With Ukraine" banner is removed from this README.
 >
 > Everything else, including the tile protocol, is upstream `strange-v/RemoteWebViewServer`.
 
